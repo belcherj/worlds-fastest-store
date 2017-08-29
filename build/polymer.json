@@ -1,0 +1,75 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/shop-app.html",
+  "fragments": [
+    "src/shop-list.html",
+    "src/shop-detail.html",
+    "src/shop-cart.html",
+    "src/shop-checkout.html",
+    "src/lazy-resources.html"
+  ],
+  "sources": [
+    "src/**/*",
+    "data/**/*",
+    "images/**/*",
+    "bower.json",
+    "index.html",
+    "src/shop-app.html",
+    "src/shop-list.html",
+    "src/shop-detail.html",
+    "src/shop-cart.html",
+    "src/shop-checkout.html",
+    "src/lazy-resources.html"
+  ],
+  "extraDependencies": [
+    "app.yaml",
+    "manifest.json",
+    "bower_components/webcomponentsjs/*",
+    "bower_components/webcomponentsjs/*.js"
+  ],
+  "builds": [
+    {
+      "name": "es5-bundled",
+      "js": {
+        "minify": true,
+        "compile": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true,
+      "addPushManifest": true,
+      "preset": "es5-bundled"
+    },
+    {
+      "name": "es6-unbundled",
+      "browserCapabilities": [
+        "es2015",
+        "push"
+      ],
+      "js": {
+        "minify": true,
+        "compile": false
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": false,
+      "addServiceWorker": true,
+      "addPushManifest": true,
+      "preset": "es6-unbundled"
+    }
+  ],
+  "lint": {
+    "rules": [
+      "polymer-2-hybrid"
+    ]
+  }
+}

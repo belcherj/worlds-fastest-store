@@ -1,0 +1,23 @@
+{
+  "name": "worlds-fastest-store",
+  "version": "1.0.0",
+  "description": "### Setup",
+  "main": "service-worker.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": ""
+    "test": "polymer test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/belcherj/worlds-fastest-store.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/belcherj/worlds-fastest-store/issues"
+  },
+  "homepage": "https://github.com/belcherj/worlds-fastest-store#readme"
+}
