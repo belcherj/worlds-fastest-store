@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "bower": "bpwer install"
+    "bower": "bower install",
     "build": "polymer build",
     "start": "polymer serve",
     "test": "polymer test"
