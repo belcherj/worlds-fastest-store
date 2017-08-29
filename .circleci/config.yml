@@ -34,5 +34,6 @@ jobs:
          name: Deploy Master to GKE
          command: |
            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              cd build && npm install && cd ..
              ./deploy.sh
            fi
