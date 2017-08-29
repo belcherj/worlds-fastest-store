@@ -35,5 +35,5 @@ jobs:
          command: |
            if [ "${CIRCLE_BRANCH}" == "master" ]; then
               cd build && npm install && cd ..
-             ./deploy.sh
+             ./bin/deploy.sh
            fi
