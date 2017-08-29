@@ -7,6 +7,7 @@
     "test": "test"
   },
   "scripts": {
+    "bower": "bpwer install"
     "build": "polymer build",
     "start": "polymer serve",
     "test": "polymer test"
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/belcherj/worlds-fastest-store#readme",
   "devDependencies": {
-    "polymer-cli": "^1.5.2"
+    "bower": "1.8.0"
+    "polymer-cli": "1.5.2"
   }
 }
