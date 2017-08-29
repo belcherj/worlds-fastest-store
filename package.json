@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "start": ""
+    "build": "polymer build",
+    "start": "polymer serve",
     "test": "polymer test"
   },
   "repository": {
@@ -19,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/belcherj/worlds-fastest-store/issues"
   },
-  "homepage": "https://github.com/belcherj/worlds-fastest-store#readme"
+  "homepage": "https://github.com/belcherj/worlds-fastest-store#readme",
+  "devDependencies": {
+    "polymer-cli": "^1.5.2"
+  }
 }
