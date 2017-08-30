@@ -22,10 +22,9 @@
     "src/lazy-resources.html"
   ],
   "extraDependencies": [
-    "app.yaml",
+    "bower_components/webcomponentsjs/*.js",
     "manifest.json",
-    "bower_components/webcomponentsjs/*",
-    "bower_components/webcomponentsjs/*.js"
+    "bower_components/webcomponentsjs/*"
   ],
   "builds": [
     {

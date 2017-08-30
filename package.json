@@ -9,7 +9,9 @@
   "scripts": {
     "bower": "bower install",
     "build": "polymer build",
-    "start": "polymer serve",
+    "deploy": "npm install && npm run build && gcloud app deploy",
+    "serve": "polymer serve",
+    "start": "prpl-server --root build --host 0.0.0.0 --https-redirect",
     "test": "polymer test"
   },
   "repository": {
@@ -22,6 +24,9 @@
     "url": "https://github.com/belcherj/worlds-fastest-store/issues"
   },
   "homepage": "https://github.com/belcherj/worlds-fastest-store#readme",
+  "dependencies": {
+    "prpl-server": "^0.7.0"
+  },
   "devDependencies": {
     "bower": "1.8.0",
     "polymer-cli": "1.5.2"

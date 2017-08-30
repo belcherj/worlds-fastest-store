@@ -2,9 +2,16 @@ runtime: python27
 api_version: 1
 threadsafe: yes
 
+skip_files:
+- node_modules/
+
 handlers:
 - url: /bower_components
   static_dir: bower_components
+  secure: always
+
+- url: /build
+  static_dir: build
   secure: always
 
 - url: /data
@@ -19,6 +26,21 @@ handlers:
   static_dir: src
   secure: always
 
+- url: /
+  static_files: index.html
+  upload: index.html
+  secure: always
+
+- url: /package.json
+  static_files: package.json
+  upload: package.json
+  secure: always
+
+- url: /polymer.json
+  static_files: polymer.json
+  upload: polymer.json
+  secure: always
+
 - url: /service-worker.js
   static_files: service-worker.js
   upload: service-worker.js
@@ -27,9 +49,4 @@ handlers:
 - url: /manifest.json
   static_files: manifest.json
   upload: manifest.json
-  secure: always
-
-- url: /.*
-  static_files: index.html
-  upload: index.html
   secure: always
