@@ -95,7 +95,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <shop-image
         alt="[[category.title]]"
-        src="[[category.image]]"
+        src="[[category.image.src]]"
         placeholder-img="[[category.placeholder]]" class="hero-image"></shop-image>
 
     <header>
@@ -174,7 +174,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _getItemHref(item) {
         // By returning null when `itemId` is undefined, the href attribute won't be set and
         // the link will be disabled.
-        return item.name ? ['/detail', this.category.name, item.name].join('/') : null;
+        return item.name ? ['/detail', this.category.name, item.slug].join('/') : null;
       }
 
       _getPluralizedQuantity(quantity) {
@@ -185,7 +185,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return  '(' + quantity + ' ' + pluralizedQ + ')';
       }
 
-      _categoryChanged(category, visible) {
+      _categoryChanged(category, visible, tries = 5) {
         if (!visible) {
           return;
         }
@@ -199,8 +199,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   title: category.title
                 }}));
             } else {
-              this.dispatchEvent(new CustomEvent('show-invalid-url-warning', {
-                bubbles: true, composed: true}));
+                this.dispatchEvent(new CustomEvent('show-invalid-url-warning', {
+                  bubbles: true, composed: true}));
             }
           });
       }

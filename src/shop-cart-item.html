@@ -166,12 +166,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </style>
 
-    <a href$="/detail/[[entry.item.category]]/[[entry.item.name]]" title$="[[entry.item.title]]">
-      <shop-image src="[[entry.item.image]]" alt="[[entry.item.title]]"></shop-image>
+    <a href$="/detail/[[entry.item.categories.0.slug]]/[[entry.item.slug]]" title$="[[entry.item.name]]">
+      <shop-image src="[[entry.item.images.0.src]]" alt="[[entry.item.name]]"></shop-image>
     </a>
     <div class="flex">
       <div class="name">
-        <a href$="/detail/[[entry.item.category]]/[[entry.item.name]]">[[entry.item.title]]</a>
+        <a href$="/detail/[[entry.item.categories.0.slug]]/[[entry.item.slug]]">[[entry.item.name]]</a>
       </div>
       <div class="detail">
         <div class="quantity">
@@ -233,7 +233,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _formatPrice(price) {
-        return price ? '$' + price.toFixed(2) : '';
+        return price ? '$' + parseInt( price, 10 ).toFixed(2) : '';
       }
 
       _removeItem() {

@@ -51,7 +51,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </style>
 
-    <shop-image src="[[item.image]]" alt="[[item.title]]"></shop-image>
+    <shop-image src="[[item.images.0.src]]" alt="[[item.title]]"></shop-image>
     <div class="title">[[item.title]]</div>
     <span class="price">[[_formatPrice(item.price)]]</span>
 
@@ -70,7 +70,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }}
 
       _formatPrice(price) {
-        return price ? '$' + price.toFixed(2) : '';
+        return price ? '$' + parseInt( price, 10 ).toFixed(2) : '';
       }
 
     }

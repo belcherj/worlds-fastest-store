@@ -41,9 +41,9 @@ handlers:
   upload: polymer.json
   secure: always
 
-- url: /service-worker.js
-  static_files: service-worker.js
-  upload: service-worker.js
+- url: /sw-precache-config.js
+  static_files: sw-precache-config.js
+  upload: sw-precache-config.js
   secure: always
 
 - url: /manifest.json

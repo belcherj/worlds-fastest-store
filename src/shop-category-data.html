@@ -14,32 +14,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
   (function() {
-    let categoryList = [
-      {
-        name: 'mens_outerwear',
-        title: 'Men\'s Outerwear',
-        image: 'images/mens_outerwear.jpg',
-        placeholder: 'data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAeAAD/7gAOQWRvYmUAZMAAAAAB/9sAhAAQCwsLDAsQDAwQFw8NDxcbFBAQFBsfFxcXFxcfHhcaGhoaFx4eIyUnJSMeLy8zMy8vQEBAQEBAQEBAQEBAQEBAAREPDxETERUSEhUUERQRFBoUFhYUGiYaGhwaGiYwIx4eHh4jMCsuJycnLis1NTAwNTVAQD9AQEBAQEBAQEBAQED/wAARCAADAA4DASIAAhEBAxEB/8QAXAABAQEAAAAAAAAAAAAAAAAAAAIEAQEAAAAAAAAAAAAAAAAAAAACEAAAAwYHAQAAAAAAAAAAAAAAERMBAhIyYhQhkaEDIwUVNREBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A3dkr5e8tfpwuneJITOzIcmQpit037Bw4mnCVNOpAAQv/2Q=='
-      },
-      {
-        name: 'ladies_outerwear',
-        title: 'Ladies Outerwear',
-        image: 'images/ladies_outerwear.jpg',
-        placeholder: 'data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAeAAD/7gAOQWRvYmUAZMAAAAAB/9sAhAAQCwsLDAsQDAwQFw8NDxcbFBAQFBsfFxcXFxcfHhcaGhoaFx4eIyUnJSMeLy8zMy8vQEBAQEBAQEBAQEBAQEBAAREPDxETERUSEhUUERQRFBoUFhYUGiYaGhwaGiYwIx4eHh4jMCsuJycnLis1NTAwNTVAQD9AQEBAQEBAQEBAQED/wAARCAADAA4DASIAAhEBAxEB/8QAWQABAQAAAAAAAAAAAAAAAAAAAAEBAQEAAAAAAAAAAAAAAAAAAAIDEAABAwMFAQAAAAAAAAAAAAARAAEygRIDIlITMwUVEQEBAAAAAAAAAAAAAAAAAAAAQf/aAAwDAQACEQMRAD8Avqn5meQ0kwk1UyclmLtNj7L4PQoioFf/2Q=='
-      },
-      {
-        name: 'mens_tshirts',
-        title: 'Men\'s T-Shirts',
-        image: 'images/mens_tshirts.jpg',
-        placeholder: 'data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAeAAD/7gAOQWRvYmUAZMAAAAAB/9sAhAAQCwsLDAsQDAwQFw8NDxcbFBAQFBsfFxcXFxcfHhcaGhoaFx4eIyUnJSMeLy8zMy8vQEBAQEBAQEBAQEBAQEBAAREPDxETERUSEhUUERQRFBoUFhYUGiYaGhwaGiYwIx4eHh4jMCsuJycnLis1NTAwNTVAQD9AQEBAQEBAQEBAQED/wAARCAADAA4DASIAAhEBAxEB/8QAWwABAQEAAAAAAAAAAAAAAAAAAAMEAQEAAAAAAAAAAAAAAAAAAAAAEAABAwEJAAAAAAAAAAAAAAARAAESEyFhodEygjMUBREAAwAAAAAAAAAAAAAAAAAAAEFC/9oADAMBAAIRAxEAPwDb7kupZU1MTGnvOCgxpvzEXTyRElCmf//Z'
-      },
-      {
-        name: 'ladies_tshirts',
-        title: 'Ladies T-Shirts',
-        image: 'images/ladies_tshirts.jpg',
-        placeholder: 'data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAeAAD/7gAOQWRvYmUAZMAAAAAB/9sAhAAQCwsLDAsQDAwQFw8NDxcbFBAQFBsfFxcXFxcfHhcaGhoaFx4eIyUnJSMeLy8zMy8vQEBAQEBAQEBAQEBAQEBAAREPDxETERUSEhUUERQRFBoUFhYUGiYaGhwaGiYwIx4eHh4jMCsuJycnLis1NTAwNTVAQD9AQEBAQEBAQEBAQED/wAARCAADAA4DASIAAhEBAxEB/8QAXwABAQEAAAAAAAAAAAAAAAAAAAMFAQEBAAAAAAAAAAAAAAAAAAABAhAAAQIDCQAAAAAAAAAAAAAAEQABITETYZECEjJCAzMVEQACAwAAAAAAAAAAAAAAAAAAATFBgf/aAAwDAQACEQMRAD8AzeADAZiFc5J7BC9Scek3VrtooilSNaf/2Q=='
-      }
-    ];
 
     class ShopCategoryData extends Polymer.Element {
 
@@ -53,20 +27,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         categories: {
           type: Array,
-          value: categoryList,
-          readOnly: true,
           notify: true
         },
 
         category: {
           type: Object,
-          computed: '_computeCategory(categoryName)',
+          computed: '_computeCategory(categoryName, categories)',
           notify: true
         },
 
         item: {
           type: Object,
-          computed: '_computeItem(category.items, itemName)',
+          computed: '_computeItem(category.items, itemName, categories)',
           notify: true
         },
 
@@ -78,7 +50,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       }}
 
-      _getCategoryObject(categoryName) {
+      _getCategoryObject(categoryName, categories) {
+        if ( !categories ) {
+          return {};
+        }
         for (let i = 0, c; c = this.categories[i]; ++i) {
           if (c.name === categoryName) {
             return c;
@@ -86,24 +61,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       }
 
-      _computeCategory(categoryName) {
+      _computeCategory(categoryName, categories) {
         // Fetch the items of the category. Note that the fetch is asynchronous,
         // which means `category.items` may not be set initially (but that path
         // will be notified when the fetch completes).
-        let categoryObj = this._getCategoryObject(categoryName);
+        let categoryObj = this._getCategoryObject(categoryName, categories);
         this._fetchItems(categoryObj, 1);
         return categoryObj;
       }
 
-      _computeItem(items, itemName) {
-        if (!items || !itemName) {
+      _computeItem(items, itemName, categories) {
+        if (!items || !itemName || !categories) {
           return;
         }
         for (let i = 0, item; item = items[i]; ++i) {
-          if (item.name === itemName) {
+          if (item.slug === itemName) {
             return item;
           }
         }
+      }
+
+      _fetchCategories( attempts ) {
+        this._setFailure(false);
+        this._getResource({
+          url: 'http://localhost:3020/categories',
+          onLoad(e) {
+            this.set('categories', JSON.parse(e.target.responseText));
+            this.refresh();
+          },
+          onError(e) {
+            this._setFailure(true);
+          }
+        }, attempts);
       }
 
       _fetchItems(category, attempts) {
@@ -113,7 +102,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           return;
         }
         this._getResource({
-          url: 'data/' + category.name + '.json',
+          url: 'http://localhost:3020/category/' + category.id,
           onLoad(e) {
             this.set('category.items', JSON.parse(e.target.responseText));
           },
@@ -138,6 +127,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         xhr.open('GET', rq.url);
         xhr.send();
+      }
+
+      constructor() {
+        super();
+        this._fetchCategories( 1 );
       }
 
       refresh() {
