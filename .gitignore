@@ -1,5 +1,4 @@
 bower_components
-build/es5-bundled
-build/es6-unbundled
+build
 node_modules
 package-lock.json
