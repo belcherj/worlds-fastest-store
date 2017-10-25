@@ -28,23 +28,6 @@
   ],
   "builds": [
     {
-      "name": "es5-bundled",
-      "js": {
-        "minify": true,
-        "compile": true
-      },
-      "css": {
-        "minify": true
-      },
-      "html": {
-        "minify": true
-      },
-      "bundle": true,
-      "addServiceWorker": true,
-      "addPushManifest": true,
-      "preset": "es5-bundled"
-    },
-    {
       "name": "es6-unbundled",
       "browserCapabilities": [
         "es2015",

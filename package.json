@@ -11,7 +11,8 @@
     "build": "polymer build",
     "deploy": "npm install && npm run build && gcloud app deploy",
     "serve": "polymer serve build/es6-unbundled",
-    "start": "polymer build && polymer serve build/es6-unbundled",
+    "start": "polymer build && npm run sw && polymer serve build/es6-unbundled",
+    "sw": "workbox inject:manifest",
     "test": "polymer test"
   },
   "repository": {
@@ -26,6 +27,7 @@
   "homepage": "https://github.com/belcherj/worlds-fastest-store#readme",
   "devDependencies": {
     "bower": "1.8.0",
-    "polymer-cli": "1.5.2"
+    "polymer-cli": "1.5.2",
+    "workbox-cli": "^2.1.0"
   }
 }
