@@ -2,7 +2,7 @@
   "name": "worlds-fastest-store",
   "version": "1.0.0",
   "description": "### Setup",
-  "main": "service-worker.js",
+  "main": "sw.js",
   "directories": {
     "test": "test"
   },

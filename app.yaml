@@ -6,47 +6,35 @@ skip_files:
 - node_modules/
 
 handlers:
+
 - url: /bower_components
-  static_dir: bower_components
-  secure: always
-
-- url: /build
-  static_dir: build
-  secure: always
-
-- url: /data
-  static_dir: data
+  static_dir: build/es6-unbundled/bower_components
   secure: always
 
 - url: /images
-  static_dir: images
+  static_dir: build/es6-unbundled/images
   secure: always
 
 - url: /src
-  static_dir: src
-  secure: always
-
-- url: /
-  static_files: index.html
-  upload: index.html
-  secure: always
-
-- url: /package.json
-  static_files: package.json
-  upload: package.json
-  secure: always
-
-- url: /polymer.json
-  static_files: polymer.json
-  upload: polymer.json
-  secure: always
-
-- url: /sw-precache-config.js
-  static_files: sw-precache-config.js
-  upload: sw-precache-config.js
+  static_dir: build/es6-unbundled/src
   secure: always
 
 - url: /manifest.json
-  static_files: manifest.json
-  upload: manifest.json
+  static_files: build/es6-unbundled/manifest.json
+  upload: build/es6-unbundled/manifest.json
+  secure: always
+
+- url: /push-manifest.json
+  static_files: build/es6-unbundled/push-manifest.json
+  upload: build/es6-unbundled/push-manifest.json
+  secure: always
+
+- url: /sw.js
+  static_files: build/es6-unbundled/sw.js
+  upload: build/es6-unbundled/sw.js
+  secure: always
+
+- url: /.*
+  static_files: build/es6-unbundled/index.html
+  upload: build/es6-unbundled/index.html
   secure: always
