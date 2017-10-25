@@ -98,7 +98,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _fetchItems(category, attempts) {
         this._setFailure(false);
         // Only fetch the items of a category if it has not been previously set.
-        if (!category || category.items) {
+        if (!category || !category.id || category.items) {
           return;
         }
         this._getResource({
