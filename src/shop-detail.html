@@ -269,6 +269,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _getSizes(item) {
+        if ( !item || !item.attributes ) {
+          return;
+        }
         for (let i = 0, attribute; attribute = item.attributes[i]; ++i) {
           if (attribute.name === 'Size') {
             return attribute.options;
