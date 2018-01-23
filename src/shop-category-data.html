@@ -84,7 +84,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _fetchCategories( attempts ) {
         this._setFailure(false);
         this._getResource({
-          url: 'https://worlds-fastest-store-node.appspot.com/categories',
+          url: 'https://us-central1-worlds-fastest-store-server.cloudfunctions.net/categories',
           onLoad(e) {
             this.set('categories', JSON.parse(e.target.responseText));
             this.refresh();
@@ -102,7 +102,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           return;
         }
         this._getResource({
-          url: 'https://worlds-fastest-store-node.appspot.com/category/' + category.id,
+          url: 'https://us-central1-worlds-fastest-store-server.cloudfunctions.net/category/?category=' + category.id,
           onLoad(e) {
             this.set('category.items', JSON.parse(e.target.responseText));
           },

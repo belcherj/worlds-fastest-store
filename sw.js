@@ -3,7 +3,7 @@ const workboxSW = new self.WorkboxSW();
 workboxSW.precache([]);
 
 workboxSW.router.registerRoute(
-  'https://worldsfasteststore.mystagingwebsite.com/(.*)',
+  'https://jonathan-belcher.com/(.*)',
   workboxSW.strategies.cacheFirst({
     cacheName: 'api',
     cacheExpiration: {
@@ -14,7 +14,7 @@ workboxSW.router.registerRoute(
 );
 
 workboxSW.router.registerRoute(
-  'https://worlds-fastest-store-node.appspot.com/(.*)',
+  'https://us-central1-worlds-fastest-store-server.cloudfunctions.net/(.*)',
   workboxSW.strategies.cacheFirst({
     cacheName: 'api',
     cacheExpiration: {
