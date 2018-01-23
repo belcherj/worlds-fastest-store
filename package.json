@@ -8,10 +8,10 @@
   },
   "scripts": {
     "bower": "bower install",
-    "build": "polymer build",
+    "build": "polymer build && npm run sw",
     "deploy": "npm install && npm run build && gcloud app deploy",
     "serve": "polymer serve build/es6-unbundled",
-    "start": "polymer build && npm run sw && polymer serve build/es6-unbundled",
+    "start": "polymer build && polymer serve build/es6-unbundled",
     "sw": "workbox inject:manifest",
     "test": "polymer test"
   },
